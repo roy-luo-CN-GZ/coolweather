@@ -32,7 +32,6 @@ public class HttpUtil {
 			@Override
 			public void run() {
 				// TODO 自动生成的方法存根
-				Log.d("HttpUtil", "start thread");     //**********************
 				HttpURLConnection connection=null;
 				try {
 					URL url=new URL(address);
@@ -40,7 +39,7 @@ public class HttpUtil {
 					connection.setRequestMethod("GET");
 					connection.setReadTimeout(8000);
 					connection.setConnectTimeout(8000);
-					InputStream in=connection.getInputStream();            //!!!!!!!!!!!!!!!!
+					InputStream in=connection.getInputStream();           
 					BufferedReader reader=new BufferedReader(new InputStreamReader(in));
 					StringBuilder response=new StringBuilder();
 					String line;
@@ -56,7 +55,6 @@ public class HttpUtil {
 	
 				} catch (Exception e) {
 					// TODO 自动生成的 catch 块
-					Log.d("HttpUtil", e.toString());  //***********************
 					if(listener!=null){
 						//回掉onListener()方法
 						listener.onError(e);
@@ -65,7 +63,6 @@ public class HttpUtil {
 					if(connection!=null){
 						connection.disconnect();
 					}
-					Log.d("HttpUtil", "finish thread");  //***********************
 				}
 			}
 		}).start();
